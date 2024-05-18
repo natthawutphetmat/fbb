@@ -8,6 +8,7 @@ const Page = () => {
   const [error, setError] = useState(null);
   const [urls, setUrls] = useState([]);
   const [url, setUrl] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -37,9 +38,23 @@ const Page = () => {
     if (url) {
       window.location.href = url;
     } else {
-      alert("Please enter a valid URL");
+    
     }
   };
+
+
+const Clickxxx = () => {
+
+
+  if (url) {
+    window.location.href = xx;
+  } else {
+  
+  }
+}
+
+
+
 
   return (
     <>
@@ -96,10 +111,29 @@ const Page = () => {
 
 
           </div>
-        ))}
-        <button onClick={Clickto} className="btns">
-          สมัครเลย 
+              ))}
+
+
+
+
+              <div className="all">  
+            
+            
+              <div className="web">  
+           
+       
+        <button onClick={Clickxxx} className="btnsx">
+          สมัครAuto
         </button>
+
+        </div>
+
+
+        <div className="line">  
+         
+        <button onClick={Clickto} className="btnx">
+          ติดต่อเรา
+        </button> </div></div>
       </div>
     </>
   );
