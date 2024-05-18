@@ -37,7 +37,7 @@ const Page = () => {
     if (url) {
       window.location.href = url;
     } else {
-      alert("Please enter a valid URL");
+     
     }
   };
 
