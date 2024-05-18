@@ -39,19 +39,12 @@ const Page = () => {
       window.location.href = url;
     } else {
     
+
+     
+
     }
   };
 
-
-const Clickxxx = () => {
-
-
-  if (url) {
-    window.location.href = xx;
-  } else {
-  
-  }
-}
 
 
 

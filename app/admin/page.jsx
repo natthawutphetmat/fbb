@@ -1,12 +1,20 @@
-'use client';
+"use client"
 
-import Swal from 'sweetalert2';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const UploadPage = () => { // ลบ async ที่ไม่จำเป็น
-    const [files, setFiles] = useState([]); // กำหนดค่าเริ่มต้นเป็นอาร์เรย์ว่าง
+
+const UploadPage = () => {
+    const [files, setFiles] = useState([]);
     const [message, setMessage] = useState('');
-    const [data, setData] = useState([]); // เพิ่มการกำหนดค่า data
+    const [data, setData] = useState([]);
+ 
+
+    useEffect(() => {
+        const auth = localStorage.getItem('authenticated');
+        if (auth !== 'true') {
+           window.location.href="login"// เปลี่ยนเส้นทางไปยังหน้า Login ถ้าไม่ได้ล็อกอิน
+        }
+    }, []);
 
     const handleUpload = async (event) => {
         event.preventDefault();
@@ -25,7 +33,6 @@ const UploadPage = () => { // ลบ async ที่ไม่จำเป็น
             setMessage(result.message);
             setFiles(result.data.uploadedFiles);
 
-            // Fetch the uploaded files data to display in the list
             fetchUploadedFiles();
         } catch (error) {
             console.error('Error uploading files:', error);
@@ -43,11 +50,9 @@ const UploadPage = () => { // ลบ async ที่ไม่จำเป็น
         }
     };
 
-    // Fetch uploaded files on component mount
-    React.useEffect(() => {
+    useEffect(() => {
         fetchUploadedFiles();
     }, []);
-
 
     const handleDelete = async (id) => {
         try {
@@ -58,18 +63,12 @@ const UploadPage = () => { // ลบ async ที่ไม่จำเป็น
             const result = await response.json();
             setMessage(result.message);
 
-            // Refresh the list of uploaded files
             fetchUploadedFiles();
         } catch (error) {
             console.error('Error deleting file:', error);
             setMessage('Error deleting file');
         }
     };
-
-
-
-
-
 
     return (
         <div className="container text-center mt-5">
@@ -92,35 +91,12 @@ const UploadPage = () => { // ลบ async ที่ไม่จำเป็น
 
             {data.length > 0 && (
                 <div>
-                       <div className="flexbox">
                     {data.map((item, index) => (
-                        <div key={index} tabIndex={0}>
-                           
-                           
-                          
-                          
-                        
-                                
-                                <div className="item">  
-                              
-                                <img src={`https://api-upload.adsdep.com/${item.url}`} alt={item.filename} /> 
-
-                               
-                                </div>  {item.id}
-
-                                <button onClick={() => handleDelete(item.id)} className="btn">Delete</button>
-
-                                </div>
-                  
-                           
-
-
-
-                          
-              
-                       
+                        <div key={index} className="item">
+                            <img src={`https://api-upload.adsdep.com/${item.url}`} alt={item.filename} />
+                            <button onClick={() => handleDelete(item.id)} className="btn">Delete</button>
+                        </div>
                     ))}
-                </div>
                 </div>
             )}
         </div>
