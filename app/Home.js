@@ -62,10 +62,12 @@ const Page = () => {
           />
         </div>
       ) : (
-        <p>Loading URLs...</p>
+        <p></p>
       )}
 
-      <main>
+      <div className='flexboxs' >
+
+
         {data.map((item) => (
           <div
             key={item.id}
@@ -74,25 +76,31 @@ const Page = () => {
               if (item.urlss) {
                 window.location.href = item.urlss;
               } else {
-                alert("URL is not available");
+               
               }
             }}
           >
-            <div className="containerimg">
-              <Image
-                src={`https://api-upload.adsdep.com/${item.url}`}
-                width={400}
-                height={400}
-                alt={item.filename}
-                className="imge"
-              />
+            <div className="items">
+
+              
+              
+              
+              
+              
+              <Image src={`https://api-upload.adsdep.com/${item.url}`} width={400} height={400} alt={item.filename} className="imge" />
+
+
+
             </div>
+
+
+
           </div>
         ))}
         <button onClick={Clickto} className="btns">
-          สมัครเลย
+          สมัครเลย 
         </button>
-      </main>
+      </div>
     </>
   );
 }

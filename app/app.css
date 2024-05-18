@@ -14,18 +14,24 @@
     border: 1px solid;
   
 }
-
-
-.containerimg {
-    max-width: 600px;
-    border: 1px solid;
-    margin: auto;
-
+.flexboxs {
+   display: flex;
+    box-sizing: border-box;
+    flex-direction:column-reverse;
+  
 }
 
-.containerimg img {
+.items {
+    display:block;
+    box-sizing: border-box;
+    max-width: 400px;
+    border: 1px solid;
+  
+}
+
+img {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     height: 100%;
 }
 
