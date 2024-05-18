@@ -49,9 +49,9 @@ const Page = () => {
   return (
 <>  
 
-    <div>
+    <div className='xxxxx' >
     
-      <ul>
+    
         {urls.map((url, index) => (
           <li key={index} onClick={() => window.location.href = url.urlss}>
            
@@ -63,7 +63,7 @@ const Page = () => {
             {url.urlss}
           </li>
         ))}
-      </ul>
+    
     </div>
  
 
