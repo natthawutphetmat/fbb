@@ -3,12 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const Page = () => {
+const Home = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [urls, setUrls] = useState([]);
   const [url, setUrl] = useState("");
-  const [name, setName] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -19,6 +18,12 @@ const Page = () => {
         }
         const result = await res.json();
         setData(result);
+        // Extract URLs for the select dropdown
+        const urlsExtracted = result.map(item => ({
+          id: item.id,
+          url: `https://api-upload.adsdep.com/${item.url}`
+        }));
+        setUrls(urlsExtracted);
       } catch (error) {
         setError(error.message);
       }
@@ -27,55 +32,21 @@ const Page = () => {
     getData();
   }, []);
 
-
-
-
   const handleUrlChange = (event) => {
     setUrl(event.target.value);
   };
 
-  const Clickto = () => {
-    if (url) {
-      window.location.href = url;
-    } else {
-    
-
-     
-
-    }
-  };
-
-
-
-
-
   return (
     <>
       {urls.length > 0 ? (
-        <div>
-          <select onChange={handleUrlChange} value={url}>
-            <option value="">Select URL</option>
-            {urls.map((item) => (
-              <option key={item.id} value={item.url}>
-                {item.url}
-              </option>
-            ))}
-          </select>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter URL"
-            value={url}
-            onChange={handleUrlChange}
-          />
-        </div>
+        <>
+          
+        </>
       ) : (
         <p></p>
       )}
 
-      <div className='flexboxs' >
-
-
+      <div className='flexboxs'>
         {data.map((item) => (
           <div
             key={item.id}
@@ -83,53 +54,25 @@ const Page = () => {
             onClick={() => {
               if (item.urlss) {
                 window.location.href = item.urlss;
-              } else {
-               
               }
             }}
           >
             <div className="items">
-
-              
-              
-              
-              
-              
-              <Image src={`https://api-upload.adsdep.com/${item.url}`} width={400} height={400} alt={item.filename} className="imge" />
-
-
-
+              <Image 
+                src={`https://api-upload.adsdep.com/${item.url}`} 
+                width={400} 
+                height={400} 
+                alt={item.filename} 
+                className="imge" 
+              />
             </div>
-
-
-
           </div>
-              ))}
+        ))}
 
-
-
-
-              <div className="all">  
-            
-            
-              <div className="web">  
-           
        
-        <button onClick={Clickxxx} className="btnsx">
-          สมัครAuto
-        </button>
-
-        </div>
-
-
-        <div className="line">  
-         
-        <button onClick={Clickto} className="btnx">
-          ติดต่อเรา
-        </button> </div></div>
       </div>
     </>
   );
 }
 
-export default Page;
+export default Home;

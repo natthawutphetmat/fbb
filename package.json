@@ -21,10 +21,13 @@
     "path": "^0.12.7",
     "react": "^18",
     "react-dom": "^18",
+    "react-facebook-pixel": "^1.0.4",
     "react-router-dom": "^6.23.1",
     "sweetalert2": "^11.11.0"
   },
   "devDependencies": {
+    "@types/node": "20.12.12",
+    "@types/react": "18.3.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.3"
   }
