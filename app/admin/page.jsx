@@ -9,13 +9,7 @@ const UploadPage = () => {
     const [data, setData] = useState([]);
  
 
-    useEffect(() => {
-        const auth = localStorage.getItem('authenticated');
-        if (auth !== 'true') {
-           window.location.href="login"// เปลี่ยนเส้นทางไปยังหน้า Login ถ้าไม่ได้ล็อกอิน
-        }
-    }, []);
-
+   
     const handleUpload = async (event) => {
         event.preventDefault();
         const formData = new FormData();
